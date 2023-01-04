@@ -5,20 +5,20 @@ import 'package:sqflite/sqlite_api.dart';
 
 class StudyStateModel{
 
-  static const dbName= "past_records_db.db";
+  static const dbName= "past_state_db.db";
+
   static const tableName = "states";
-  static const yearName = "year";
-  static const nowquestionName = "nowquestion";
-  static const unsolvesName = "unsolveds";
+  // static const yearName = "year";
+  static const nowquestionColumn = "nowquestion";
+  static const unsolvedsColumn = "unsolveds";
 
   Future<void> createStateTables(Database database) async{
     await database.execute(
       """
       CREATE TABLE $tableName(
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        $yearName INTEGER,
-        $nowquestionName INTEGER,
-        $unsolvesName TEXT
+        $nowquestionColumn TEXT NOT NULL,
+        $unsolvedsColumn TEXT NOT NULL
       )
       """
     );
@@ -34,13 +34,26 @@ class StudyStateModel{
     );
   }
 
-  static Future<int> createState(
-    int year,int nowQuestion, String unsolveds
-  )async{
+  static Future<void> deleteDB() async {
+    await deleteDatabase(
+      join(await getDatabasesPath(), dbName),
+    );
+    print("deleteDBok");
+  }
+
+  static Future<int> createState({
+    required String nowQuestion, 
+    required String unsolveds
+    }) async{
     final db = await StudyStateModel().db();
 
-    final data = {yearName: year,nowquestionName:nowQuestion,unsolvesName:unsolveds};
+    final data = {
+      // yearName: year,
+      nowquestionColumn:nowQuestion,
+      unsolvedsColumn:unsolveds
+      };
     final id = await db.insert(tableName, data,conflictAlgorithm: ConflictAlgorithm.replace);
+    print("createID$id");
     return id;
   }
 
@@ -49,13 +62,23 @@ class StudyStateModel{
     return db.query(tableName,orderBy: "id");
   }
 
-  static Future<int> updateState(
-    int year,int nowQuestion,String unsolveds
-  ) async {
+  static Future<int> updateState({
+    required int stateId,
+    required String nowQuestion,
+    required String unsolveds
+  }) async {
     final db = await StudyStateModel().db();
 
-    final data = {yearName: year,nowquestionName:nowQuestion,unsolvesName:unsolveds};
-    final result = await db.update(tableName, data,where: "$yearName = ?", whereArgs: [year]);
+    final data = {
+      nowquestionColumn:nowQuestion,
+      unsolvedsColumn:unsolveds
+      };
+    final result = await db.update(
+      tableName, 
+      data,
+      where: "id = ?", 
+      whereArgs: [stateId]
+      );
     return result;
   }
 

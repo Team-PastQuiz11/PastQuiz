@@ -18,18 +18,9 @@ class Question{
   });
 }
 
-final Map<int,List<Question>> yearMap = {
-  2022:Questions_2022,
-  2021:Questions_2021
+final Map<String,List<Question>> yearMap = {
+  "2022": Questions_2022,
+  "2021": Questions_2021
 };
 
-final 
-
-List<int> yearsKeys = yearMap.keys.toList();
-
-// final Map<String,int> EraYearMap = {
-//   "H21a":
-// };
-
-//H21a
-//
+List<String> yearsKeys = yearMap.keys.toList();

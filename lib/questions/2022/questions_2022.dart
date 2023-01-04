@@ -4,8 +4,6 @@ const file = "assets/images/2022";
 
 final List<Question> Questions_2022 = [
 
-  
-
   //1問目
   Question(
     title: "2022年 1問目",

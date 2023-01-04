@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:past_questions/View/tryquestions.dart';
+import 'package:past_questions/View/tryquestions/tryquestions.dart';
 import 'package:past_questions/questions/question.dart';
 import 'package:past_questions/service/database/studystateDB.dart';
 import 'package:past_questions/service/database/userRecordsDB.dart';
@@ -13,9 +13,8 @@ class ChooseYears extends ConsumerStatefulWidget{
 
 class ChooseYearsState extends ConsumerState<ChooseYears>{
 
-  final year_db = StudyStateModel.yearName;
-  final nowQuestion_db = StudyStateModel.nowquestionName;
-  final unsolves_db = StudyStateModel.unsolvesName;
+  final nowQuestiobColumn = StudyStateModel.nowquestionColumn;
+  final unsolvedsColumn = StudyStateModel.unsolvedsColumn;
 
   List<Map<String,dynamic>> state = [];
   List<Map<String,dynamic>> records = [];
@@ -43,7 +42,7 @@ class ChooseYearsState extends ConsumerState<ChooseYears>{
 
   @override
   Widget build(context){
-    final provider = ref.watch(myProvider);
+    final baseP = ref.watch(baseProvider);
 
     if(isLoading){
        return Center(child: CircularProgressIndicator(),);
@@ -58,7 +57,8 @@ class ChooseYearsState extends ConsumerState<ChooseYears>{
             for(var i=0; i<yearMap.length; i++)...[
               ElevatedButton(
                 onPressed: (){
-                  provider.DetermineYear(year: yearsKeys[i],isRemain: isRemain);
+                  
+                  baseP.DetermineYear(year: yearsKeys[i],isRemain: isRemain);
                 }, 
                 child: Text(yearsKeys[i].toString())
               )
@@ -66,7 +66,9 @@ class ChooseYearsState extends ConsumerState<ChooseYears>{
 
             ElevatedButton(
               onPressed: (){
-                
+                baseP.GoAllCource(
+                  isRemain: isRemain
+                );
               }, 
               child: const Text("全部解く")
               ),
@@ -74,7 +76,7 @@ class ChooseYearsState extends ConsumerState<ChooseYears>{
             if(isRemain)
               ElevatedButton(
                 onPressed: (){
-                  provider.reStart(state[0][year_db], state[0][nowQuestion_db], state[0][unsolves_db]);
+                  baseP.reStart(popQuestion: state[0][nowQuestiobColumn], unsolvedsStr: state[0][unsolvedsColumn]);
                 }, 
                child: Text("続きから")
               ),
