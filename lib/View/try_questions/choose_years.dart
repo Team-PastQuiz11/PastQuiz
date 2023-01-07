@@ -14,6 +14,7 @@ class ChooseYears extends ConsumerStatefulWidget {
 }
 
 class ChooseYearsState extends ConsumerState<ChooseYears> {
+  // todo プロパティ名を変更する
   final nowquestionColumn = StudyStateModel.nowquestionColumn;
   final unsolvedsColumn = StudyStateModel.unsolvedsColumn;
 
