@@ -12,7 +12,7 @@ Future<void> studyStart({
   for (var i = 0; i < yearsList.length; i++) {
     final unsolvedsIndex =
         List<String>.generate(yearMap[yearsList[i]]!.length, (index) {
-      return "${yearsList[i]}$index";
+      return '${yearsList[i]}$index';
     });
     allList.addAll(unsolvedsIndex);
   }
