@@ -1,5 +1,4 @@
-class BaseModel{
-
+class BaseModel {
   BaseModel({
     required this.popQuestion,
     required this.drawerScreenManager,
@@ -14,4 +13,4 @@ class BaseModel{
 
 }
 
-List<String> unsolvedQuestions = [];
+List<String> unsolvedsQuestions = [];
