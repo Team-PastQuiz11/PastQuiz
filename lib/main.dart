@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:past_questions/View/Router/drawerRouter.dart';
+
+import 'view/router/drawer_router.dart';
 
 void main() {
   runApp(
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return const MaterialApp(
       home: DrawerRouter(),
     );
