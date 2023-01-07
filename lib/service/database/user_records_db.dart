@@ -44,7 +44,7 @@ class UserRecordsModel {
     return db.query(tableName, orderBy: 'id');
   }
 
-  static Future<List<Map<String, dynamic>>> getRecordsList_true() async {
+  static Future<List<Map<String, dynamic>>> getRecordsListTrue() async {
     final db = await UserRecordsModel().db();
     return db.query(tableName, where: '$isCorrectColumn = ?', whereArgs: [0]);
   }

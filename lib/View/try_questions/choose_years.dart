@@ -26,7 +26,7 @@ class ChooseYearsState extends ConsumerState<ChooseYears> {
   Future<void> _refreshJournals() async {
     final stateData = await StudyStateModel.getState();
     final recordsData = await UserRecordsModel.getRecordsList();
-    final recordsTrueData = await UserRecordsModel.getRecordsList_true();
+    final recordsTrueData = await UserRecordsModel.getRecordsListTrue();
 
     setState(() {
       state = stateData;
