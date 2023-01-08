@@ -24,20 +24,24 @@ import 'package:past_questions/questions/2022/questions_2022.dart';
 
 // List<String> yearsKeys = yearMap.keys.toList();
 
-//1つのdartファイルで全部書くテイで
+//1つのdartファイルに過去問データを全部書くテイで
 class Question {
   int year; //年度
-  int year_qustion; //年度の？問目
+  int year_question; //年度の？問目
   String season; //春or秋
   String category; //3大カテゴリ
-  String category_Detail; //3大カテゴリ内の詳細
+  String category_Detail; //3大カテゴリ内の詳細 ストラテジorマネジメントor
   bool afterCheck; //後で確認したい問題
 
   String question_statement; //問題文
   String question_imagePath; //問題図
 
-  double correct_per; //問題の歴代全体正解率
+  //　↓　ここはあってもなくてもいい（負荷が掛かるならいらない）
+  int all_q_count; //全体の回答数
+  int all_q_correct; //全体の正解数
+  double correct_per; //問題の歴代全体正解率　＝全体の正解数/全体の回答数
   int retry_count; //この問題何回目？
+  //　↑
 
   List<Map<String, dynamic>> choices = [
     //アの選択
@@ -74,7 +78,7 @@ class Question {
 
   Question({
     required this.year,
-    required this.year_qustion,
+    required this.year_question,
     required this.season,
     required this.category,
     required this.category_Detail,
