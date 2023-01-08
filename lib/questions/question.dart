@@ -36,6 +36,9 @@ class Question {
   String question_statement; //問題文
   String question_imagePath; //問題図
 
+  double correct_per; //問題の歴代全体正解率
+  int retry_count; //この問題何回目？
+
   List<Map<String, dynamic>> choices = [
     //アの選択
     {
@@ -66,7 +69,7 @@ class Question {
       'judge': '',
     },
     //どう書けばいいのか...
-    //内容：選択肢　{選択肢、図、紐づく用語、正解or不正解}
+    //内容：選択肢　{選択肢(図を使う場合null)、図(nullの可能性)、紐づく用語(nullの可能性もある)、正解or不正解}
   ];
 
   Question({
@@ -78,5 +81,9 @@ class Question {
     this.afterCheck = false,
     required this.question_statement,
     this.question_imagePath = "",
+    //選択肢の表記??
+    required this.choices,
+    required this.correct_per,
+    required this.retry_count,
   });
 }
