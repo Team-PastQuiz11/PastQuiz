@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'view/router/drawer_router.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(
+    const ProviderScope(child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,6 +14,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return const MaterialApp(home: DrawerRouter());
+    return const MaterialApp(
+      /// false にすることで画面右上の debug 文字を消すことができる
+      debugShowCheckedModeBanner: false,
+      home: DrawerRouter(),
+    );
   }
 }
