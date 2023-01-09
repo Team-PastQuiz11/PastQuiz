@@ -8,7 +8,7 @@ import 'custom_drawer.dart';
 import 'custom_float_button.dart';
 
 class DrawerRouter extends ConsumerStatefulWidget {
-  const DrawerRouter({Key? key}) : super(key: key);
+  const DrawerRouter({super.key});
 
   @override
   ConsumerState<DrawerRouter> createState() => DrawerRouterState();

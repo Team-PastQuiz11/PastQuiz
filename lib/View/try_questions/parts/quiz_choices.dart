@@ -6,9 +6,7 @@ import 'package:past_questions/service/database/user_records_db.dart';
 import '../try_questions.dart';
 
 class QuizChoices extends ConsumerStatefulWidget {
-  const QuizChoices({
-    Key? key,
-  }) : super(key: key);
+  const QuizChoices({super.key});
 
   @override
   ConsumerState<QuizChoices> createState() => QuizChoicesState();
