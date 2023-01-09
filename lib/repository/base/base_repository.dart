@@ -8,7 +8,7 @@ import 'package:past_questions/service/database/study_state_db.dart';
 
 class BaseRepository extends ChangeNotifier {
   BaseModel model = BaseModel(
-    popQuestion: "",
+    popQuestion: '',
     drawerScreenManager: 0,
     isEdit: false,
     // quizAnswer: ""
@@ -33,12 +33,13 @@ class BaseRepository extends ChangeNotifier {
 
   void determineYear({required String year, required bool isRemain}) async {
     await studyStart(
-        isRemain: isRemain,
-        popQuestion: model.popQuestion,
-        yearsList: [year],
-        goNextQ: () {
-          goNextQ(stateId: uselessStateId, isStart: true);
-        });
+      isRemain: isRemain,
+      popQuestion: model.popQuestion,
+      yearsList: [year],
+      goNextQ: () {
+        goNextQ(stateId: uselessStateId, isStart: true);
+      },
+    );
 
     notifyListeners();
   }
@@ -49,13 +50,14 @@ class BaseRepository extends ChangeNotifier {
     unsolvedQuestions.remove(model.popQuestion);
 
     // String unsolved16 = c.hex.encode(unsolvedNumbers);
-    String unSolvedStr = unsolvedQuestions.join(",");
+    String unSolvedStr = unsolvedQuestions.join(',');
 
     if (!isStart) {
       StudyStateModel.updateState(
-          stateId: stateId,
-          nowQuestion: model.popQuestion,
-          unSolved: unSolvedStr);
+        stateId: stateId,
+        nowQuestion: model.popQuestion,
+        unSolved: unSolvedStr,
+      );
     }
 
     notifyListeners();
@@ -69,19 +71,20 @@ class BaseRepository extends ChangeNotifier {
 
   void goEnd() {
     StudyStateModel.deleteState();
-    model.popQuestion = "終了";
+    model.popQuestion = '終了';
 
     notifyListeners();
   }
 
   Future<void> goAllCourse({required bool isRemain}) async {
     await studyStart(
-        isRemain: isRemain,
-        popQuestion: model.popQuestion,
-        yearsList: yearsKeys,
-        goNextQ: () {
-          goNextQ(stateId: uselessStateId, isStart: true);
-        });
+      isRemain: isRemain,
+      popQuestion: model.popQuestion,
+      yearsList: yearsKeys,
+      goNextQ: () {
+        goNextQ(stateId: uselessStateId, isStart: true);
+      },
+    );
 
     notifyListeners();
   }

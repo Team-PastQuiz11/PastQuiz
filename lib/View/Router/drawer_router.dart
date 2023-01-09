@@ -28,20 +28,21 @@ class DrawerRouterState extends ConsumerState<DrawerRouter> {
     final popQuestion = baseP.model.popQuestion;
     final drawerScreenManager = baseP.model.drawerScreenManager;
 
-    bool isNumber = (popQuestion == "" || popQuestion == "終了") ? false : true;
+    bool isNumber = (popQuestion == '' || popQuestion == '終了') ? false : true;
     int? popNum = isNumber ? int.parse(popQuestion) : null;
     String? popYear = isNumber ? popQuestion.substring(0, 4) : null;
     String? popIndex = isNumber ? popQuestion.substring(4) : null;
     int? questionNumber = isNumber ? int.parse(popIndex!) + 1 : null;
 
     String title = !(isNumber && drawerScreenManager == 0)
-        ? "タイトル"
-        : "$popYear年 $questionNumber問";
+        ? 'タイトル'
+        : '$popYear年 $questionNumber問';
 
     return Scaffold(
-        appBar: const CustomAppbar(),
-        body: SafeArea(child: screenMap[drawerScreenManager]!),
-        endDrawer: const CustomDrawer(),
-        floatingActionButton: const CustomFloatButton());
+      appBar: const CustomAppbar(),
+      body: SafeArea(child: screenMap[drawerScreenManager]!),
+      endDrawer: const CustomDrawer(),
+      floatingActionButton: const CustomFloatButton(),
+    );
   }
 }

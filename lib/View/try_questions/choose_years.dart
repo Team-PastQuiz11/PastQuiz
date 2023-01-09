@@ -58,37 +58,43 @@ class ChooseYearsState extends ConsumerState<ChooseYears> {
         children: [
           for (var i = 0; i < yearMap.length; i++) ...[
             ElevatedButton(
-                onPressed: () {
-                  baseP.determineYear(year: yearsKeys[i], isRemain: isRemain);
-                },
-                child: Text(yearsKeys[i].toString()))
+              onPressed: () {
+                baseP.determineYear(year: yearsKeys[i], isRemain: isRemain);
+              },
+              child: Text(yearsKeys[i].toString()),
+            )
           ],
           ElevatedButton(
-              onPressed: () {
-                baseP.goAllCourse(isRemain: isRemain);
-              },
-              child: const Text("全部解く")),
+            onPressed: () {
+              baseP.goAllCourse(isRemain: isRemain);
+            },
+            child: const Text('全部解く'),
+          ),
           if (isRemain)
             ElevatedButton(
-                onPressed: () {
-                  baseP.reStart(
-                      popQuestion: state[0][nowQuestionColumn],
-                      unSolvedStr: state[0][unSolvedColumn]);
-                },
-                child: const Text("続きから")),
-          ElevatedButton(
-              onPressed: () async {
-                await UserRecordsModel.deleteAllRecord();
-                _refreshJournals();
+              onPressed: () {
+                baseP.reStart(
+                  popQuestion: state[0][nowQuestionColumn],
+                  unSolvedStr: state[0][unSolvedColumn],
+                );
               },
-              child: const Text("全記録削除")),
+              child: const Text('続きから'),
+            ),
+          ElevatedButton(
+            onPressed: () async {
+              await UserRecordsModel.deleteAllRecord();
+              _refreshJournals();
+            },
+            child: const Text('全記録削除'),
+          ),
           const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(records.length.toString()),
               Text(
-                  "${(recordsTrue.length / records.length * 100).toStringAsFixed(1)}%"),
+                '${(recordsTrue.length / records.length * 100).toStringAsFixed(1)}%',
+              ),
               Text(recordsTrue.length.toString())
             ],
           )

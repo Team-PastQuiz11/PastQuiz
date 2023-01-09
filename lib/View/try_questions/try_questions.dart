@@ -14,9 +14,9 @@ final questionProvider =
 
 class TryQuestions extends ConsumerWidget {
   final Map<String, Widget> childMap = {
-    "": const ChooseYears(),
-    "終了": const Center(
-      child: Text("おめでとう"),
+    '': const ChooseYears(),
+    '終了': const Center(
+      child: Text('おめでとう'),
     )
   };
 

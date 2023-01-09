@@ -3,69 +3,78 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class UserRecordsModel {
-  static const dbName = "past_records_db.db";
-  static const tableName = "recordStable";
+  static const dbName = 'past_records_db.db';
+  static const tableName = 'recordStable';
   // static const yearName = "year";
-  static const nowQuestionColumn = "nowQuestion";
+  static const nowQuestionColumn = 'nowQuestion';
   //0 true 1 false
-  static const isCorrectColumn = "isCorrect";
-  static const createdAtColumn = "createdAt";
+  static const isCorrectColumn = 'isCorrect';
+  static const createdAtColumn = 'createdAt';
 
   Future<void> createRecordTables(Database database) async {
-    await database.execute("""
+    await database.execute('''
       CREATE TABLE $tableName(
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         $nowQuestionColumn TEXT NOT NULL,
         $isCorrectColumn INTEGER NOT NULL,
         $createdAtColumn TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
       )
-      """);
+      ''');
   }
 
   Future<Database> db() async {
-    return openDatabase(join(await getDatabasesPath(), dbName),
-        onCreate: (db, version) async {
-      await createRecordTables(db);
-    }, version: 1);
+    return openDatabase(
+      join(await getDatabasesPath(), dbName),
+      onCreate: (db, version) async {
+        await createRecordTables(db);
+      },
+      version: 1,
+    );
   }
 
   static Future<void> deleteDB() async {
     await deleteDatabase(
       join(await getDatabasesPath(), dbName),
     );
-    print("deleteDBok");
+    print('deleteDBok');
   }
 
   static Future<List<Map<String, dynamic>>> getRecordsList() async {
     final db = await UserRecordsModel().db();
-    return db.query(tableName, orderBy: "id");
+    return db.query(tableName, orderBy: 'id');
   }
 
   static Future<List<Map<String, dynamic>>> getRecordsListTrue() async {
     final db = await UserRecordsModel().db();
-    return db.query(tableName, where: "$isCorrectColumn = ?", whereArgs: [0]);
+    return db.query(tableName, where: '$isCorrectColumn = ?', whereArgs: [0]);
   }
 
   static Future<List<Map<String, dynamic>>> getSpecificRecord(
-      String nowQuestion) async {
+    String nowQuestion,
+  ) async {
     final db = await UserRecordsModel().db();
     return db.query(
       tableName,
-      where: "$nowQuestionColumn = ?",
+      where: '$nowQuestionColumn = ?',
       whereArgs: [nowQuestion],
     );
   }
 
-  static Future<int> createRecord(
-      {required String popQuestionStr, required int isCorrect}) async {
+  static Future<int> createRecord({
+    required String popQuestionStr,
+    required int isCorrect,
+  }) async {
     final db = await UserRecordsModel().db();
 
     final data = {
       nowQuestionColumn: popQuestionStr,
       isCorrectColumn: isCorrect
     };
-    final id = await db.insert(tableName, data,
-        conflictAlgorithm: ConflictAlgorithm.replace);
+    final id = await db.insert(
+      tableName,
+      data,
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
     return id;
   }
 
@@ -73,8 +82,12 @@ class UserRecordsModel {
     final db = await UserRecordsModel().db();
 
     final data = {nowQuestionColumn: nowQuestion, isCorrectColumn: isCorrect};
-    final result = await db.update(tableName, data,
-        where: "$nowQuestionColumn = ?", whereArgs: [nowQuestion]);
+    final result = await db.update(
+      tableName,
+      data,
+      where: '$nowQuestionColumn = ?',
+      whereArgs: [nowQuestion],
+    );
     return result;
   }
 
@@ -83,7 +96,7 @@ class UserRecordsModel {
     try {
       await db.delete(tableName);
     } catch (err) {
-      debugPrint("Something went wrong $err");
+      debugPrint('Something went wrong $err');
     }
   }
 }

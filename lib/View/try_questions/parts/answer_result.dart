@@ -12,7 +12,7 @@ class AnswerResult extends ConsumerWidget {
     final quizAnswer = questionP.model.quizAnswer;
 
     return Center(
-      child: quizAnswer != "" ? Text(quizAnswer) : null,
+      child: quizAnswer != '' ? Text(quizAnswer) : null,
     );
   }
 }

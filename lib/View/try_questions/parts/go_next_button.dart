@@ -14,21 +14,22 @@ class GoNextButton extends ConsumerWidget {
     final questionP = ref.watch(questionProvider);
     final quizAnswer = questionP.model.quizAnswer;
 
-    if (quizAnswer == "") {
+    if (quizAnswer == '') {
       return const SizedBox.shrink();
     }
 
     return ElevatedButton(
-        onPressed: () async {
-          questionP.quizAnswerChange("");
+      onPressed: () async {
+        questionP.quizAnswerChange('');
 
-          if (unsolvedQuestions.isNotEmpty) {
-            List<Map<String, dynamic>> state = await StudyStateModel.getState();
-            baseP.goNextQ(stateId: state[0]["id"]);
-          } else {
-            baseP.goEnd();
-          }
-        },
-        child: const Text("次へ"));
+        if (unsolvedQuestions.isNotEmpty) {
+          List<Map<String, dynamic>> state = await StudyStateModel.getState();
+          baseP.goNextQ(stateId: state[0]['id']);
+        } else {
+          baseP.goEnd();
+        }
+      },
+      child: const Text('次へ'),
+    );
   }
 }

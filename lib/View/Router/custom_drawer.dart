@@ -17,17 +17,17 @@ class CustomDrawer extends ConsumerWidget {
         children: [
           const DrawerHeader(
             decoration: BoxDecoration(color: Colors.blue),
-            child: Text("機能一覧"),
+            child: Text('機能一覧'),
           ),
           ListTile(
-            title: const Text("過去問"),
+            title: const Text('過去問'),
             onTap: () {
               baseP.drawerScreenChange(0);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: const Text("掲示板"),
+            title: const Text('掲示板'),
             onTap: () {
               baseP.drawerScreenChange(1);
               Navigator.pop(context);

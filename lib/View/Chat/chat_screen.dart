@@ -24,10 +24,11 @@ class ChatScreenState extends ConsumerState<ChatScreen> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 7),
                   decoration: const BoxDecoration(
-                      border: Border(bottom: BorderSide(color: Colors.grey))),
+                    border: Border(bottom: BorderSide(color: Colors.grey)),
+                  ),
                   child: ListTile(
-                    title: const Text("タイトル"),
-                    subtitle: const Text("サブタイトル"),
+                    title: const Text('タイトル'),
+                    subtitle: const Text('サブタイトル'),
                     onTap: () {},
                   ),
                 ),

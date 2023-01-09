@@ -40,20 +40,25 @@ class QuizChoicesState extends ConsumerState<QuizChoices> {
       children: [
         for (var i = 0; i < 4; i++) ...[
           ElevatedButton(
-              onPressed: quizAnswer == ""
-                  ? () {
-                      questionP.quizAnswerChange(
-                          i == popQuestion.answer ? "正解" : "不正解");
+            onPressed: quizAnswer == ''
+                ? () {
+                    questionP.quizAnswerChange(
+                      i == popQuestion.answer ? '正解' : '不正解',
+                    );
 
-                      specificRecord.isNotEmpty
-                          ? UserRecordsModel.updateRecord(
-                              popQuestionStr, i == popQuestion.answer ? 0 : 1)
-                          : UserRecordsModel.createRecord(
-                              popQuestionStr: popQuestionStr,
-                              isCorrect: i == popQuestion.answer ? 0 : 1);
-                    }
-                  : null,
-              child: Text(popQuestion.choices[i]))
+                    specificRecord.isNotEmpty
+                        ? UserRecordsModel.updateRecord(
+                            popQuestionStr,
+                            i == popQuestion.answer ? 0 : 1,
+                          )
+                        : UserRecordsModel.createRecord(
+                            popQuestionStr: popQuestionStr,
+                            isCorrect: i == popQuestion.answer ? 0 : 1,
+                          );
+                  }
+                : null,
+            child: Text(popQuestion.choices[i]),
+          )
         ],
       ],
     );

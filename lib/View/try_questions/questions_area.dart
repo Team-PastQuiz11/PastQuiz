@@ -33,7 +33,7 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
     final popQuestion = yearMap[popYear]![popIndex];
 
     return FutureBuilder(
-      future: (!isFirstLoad && popQuestion.imagePath != "")
+      future: (!isFirstLoad && popQuestion.imagePath != '')
           ? preImageLoad(popQuestion.imagePath)
           : null,
       builder: (context, snapshot) {
@@ -48,7 +48,7 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
             Column(
               children: [
                 Text(popQuestion.text),
-                if (popQuestion.imagePath != "")
+                if (popQuestion.imagePath != '')
                   Image.asset(
                     popQuestion.imagePath,
                     width: MediaQuery.of(context).size.width * 0.95,
@@ -66,7 +66,7 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
   }
 
   Future<void> preImageLoad(String imagePath) async {
-    if (imagePath != "") {
+    if (imagePath != '') {
       await precacheImage(AssetImage(imagePath), context);
     }
 
