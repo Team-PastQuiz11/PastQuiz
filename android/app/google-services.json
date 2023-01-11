@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "893446214035",
+    "project_id": "pastquiz-49fcf",
+    "storage_bucket": "pastquiz-49fcf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893446214035:android:732b2564fd31d0c7dfd866",
+        "android_client_info": {
+          "package_name": "com.example.past_questions"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893446214035-qdgddsuns86iercacng69ml0n5oae02q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvf42gwGTPZg4ZksSBGieyjIjpIE9CZsw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893446214035-qdgddsuns86iercacng69ml0n5oae02q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "893446214035-h5gpi5aao837h3qrarc0sf02mdgo2rcg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pastQuestions"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
