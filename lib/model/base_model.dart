@@ -1,5 +1,4 @@
-class BaseModel{
-
+class BaseModel {
   BaseModel({
     required this.popQuestion,
     required this.drawerScreenManager,

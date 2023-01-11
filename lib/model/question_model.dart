@@ -1,5 +1,4 @@
-class QuestionModel{
-
+class QuestionModel {
   QuestionModel({
     required this.quizAnswer,
   });
