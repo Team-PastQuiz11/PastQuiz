@@ -11,13 +11,13 @@ Future<void> studyStart({
   final allList = <String>[];
   for (var i = 0; i < yearsList.length; i++) {
     final unSolvedIndex = List.generate(yearMap[yearsList[i]]!.length, (index) {
-      return "${yearsList[i]}$index";
+      return '${yearsList[i]}$index';
     });
     allList.addAll(unSolvedIndex);
   }
   unsolvedQuestions = allList;
 
-  final unSolvedtr = unsolvedQuestions.join(',');
+  final unSolved = unsolvedQuestions.join(',');
   goNextQ();
 
   if (isRemain) {
@@ -26,6 +26,6 @@ Future<void> studyStart({
 
   await StudyStateModel.createState(
     nowQuestion: popQuestion,
-    unSolved: unSolvedtr,
+    unSolved: unSolved,
   );
 }
