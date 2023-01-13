@@ -1,5 +1,10 @@
 include: package:flutter_lints/flutter.yaml
 
+analyzer:
+
+  errors:
+    unused_local_variable: false
+
 linter:
   rules:
     # const 付け忘れを教えてくれる
