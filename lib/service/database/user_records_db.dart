@@ -36,7 +36,7 @@ class UserRecordsModel {
     await deleteDatabase(
       join(await getDatabasesPath(), dbName),
     );
-    print('deleteDBok');
+    debugPrint('deleteDBok');
   }
 
   static Future<List<Map<String, dynamic>>> getRecordsList() async {
