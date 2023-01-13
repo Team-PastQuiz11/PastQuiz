@@ -3,11 +3,13 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
 
   errors:
+    # 使われていないプロパティのアラートを消す
     unused_local_variable: false
-
-linter:
-  rules:
     # const 付け忘れを教えてくれる
     prefer_single_quotes: true
     # カンマ 付け忘れを教えてくれる
     require_trailing_commas: true
+
+linter:
+  rules:
+    - prefer_single_quotes
