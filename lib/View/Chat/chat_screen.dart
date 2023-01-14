@@ -13,7 +13,7 @@ class ChatScreen extends ConsumerStatefulWidget {
 
 class ChatScreenState extends ConsumerState<ChatScreen> {
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     final baseP = ref.watch(baseProvider);
     final isEdit = baseP.model.isEdit;
 
