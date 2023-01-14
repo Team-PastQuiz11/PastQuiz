@@ -12,4 +12,5 @@ analyzer:
 
 linter:
   rules:
+    # シングルクオーテーション に統一
     - prefer_single_quotes
