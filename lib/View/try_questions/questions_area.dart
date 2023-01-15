@@ -45,47 +45,48 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
             child: CircularProgressIndicator(),
           );
         }
-        return Stack(
-          children: [
-            Column(
-              children: [
-                Positioned(
-                  top: MediaQuery.of(context).size.height * 0.25,
-                  left: MediaQuery.of(context).size.width / 2 - 50,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        // imagePathがでない場合、'問題文と画像'を表示する実装
-                        Visibility(
-                          visible: popQuestion.imagePath != '',
-                          child: Column(
-                            children: [
-                              Text(popQuestion.text),
-                              Image.asset(
-                                popQuestion.imagePath,
-                                width: MediaQuery.of(context).size.width * 0.95,
-                                fit: BoxFit.fitWidth,
-                              ),
-                            ],
+        return Scaffold(
+          body: Column(
+            children: <Widget>[
+              Expanded(
+                flex: 1,
+                child: ListView(
+                  children: [
+                    // imagePathがでない場合、'問題文と画像'を表示する実装
+                    Visibility(
+                      visible: popQuestion.imagePath != '',
+                      child: Column(
+                        children: [
+                          Text(popQuestion.text),
+                          Image.asset(
+                            popQuestion.imagePath,
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            fit: BoxFit.fitWidth,
                           ),
-                        ),
-                        // imagePathが空の場合、'問題文のみ'を表示する実装
-                        Visibility(
-                          visible: popQuestion.imagePath == '',
-                          child: Text(popQuestion.text),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
+                    // imagePathが空の場合、'問題文のみ'を表示する実装
+                    Visibility(
+                      visible: popQuestion.imagePath == '',
+                      child: Text(popQuestion.text),
+                    ),
+                  ],
                 ),
-                // 選択肢と'次へ'ボタン表示部分
-                const QuizChoices(),
-                const GoNextButton()
-              ],
-            ),
-            // '正解'、'不正解'表示部分
-            const AnswerResult()
-          ],
+              ),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    const QuizChoices(),
+                    const GoNextButton(),
+                    const AnswerResult()
+                  ],
+                ),
+              )
+            ],
+          ),
         );
       },
     );
