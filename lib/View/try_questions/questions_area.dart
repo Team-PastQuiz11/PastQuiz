@@ -34,30 +34,54 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
 
     return FutureBuilder(
       future: (!isFirstLoad && popQuestion.imagePath != '')
+          // if-else文の別の書き方
           ? preImageLoad(popQuestion.imagePath)
           : null,
       builder: (context, snapshot) {
+        // stream接続の現在の状態を確認しているif文
+        // stream待機状態の場合、CircularProgressIndicator()を表示させている
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
-
         return Stack(
           children: [
             Column(
               children: [
-                Text(popQuestion.text),
-                if (popQuestion.imagePath != '')
-                  Image.asset(
-                    popQuestion.imagePath,
-                    width: MediaQuery.of(context).size.width * 0.95,
-                    fit: BoxFit.fitWidth,
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        // imagePathがでない場合、'問題文と画像'を表示する実装
+                        Visibility(
+                          visible: popQuestion.imagePath != '',
+                          child: Column(
+                            children: [
+                              Text(popQuestion.text),
+                              Image.asset(
+                                popQuestion.imagePath,
+                                width: MediaQuery.of(context).size.width * 0.95,
+                                fit: BoxFit.fitWidth,
+                              ),
+                            ],
+                          ),
+                        ),
+                        // imagePathが空の場合、'問題文のみ'を表示する実装
+                        Visibility(
+                          visible: popQuestion.imagePath == '',
+                          child: Text(popQuestion.text),
+                        ),
+                      ],
+                    ),
                   ),
+                ),
+                // 選択肢と'次へ'ボタン表示部分
                 const QuizChoices(),
                 const GoNextButton()
               ],
             ),
+            // '正解'、'不正解'表示部分
             const AnswerResult()
           ],
         );
@@ -69,7 +93,7 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
     if (imagePath != '') {
       await precacheImage(AssetImage(imagePath), context);
     }
-
+    // widgetが画面に表示されている場合の処理
     if (mounted) {
       setState(() {
         isFirstLoad = true;
