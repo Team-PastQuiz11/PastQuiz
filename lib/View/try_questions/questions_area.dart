@@ -49,7 +49,9 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
           children: [
             Column(
               children: [
-                Expanded(
+                Positioned(
+                  top: MediaQuery.of(context).size.height * 0.25,
+                  left: MediaQuery.of(context).size.width / 2 - 50,
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
