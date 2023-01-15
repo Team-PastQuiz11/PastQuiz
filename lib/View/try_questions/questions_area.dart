@@ -60,7 +60,7 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
                         fit: BoxFit.fitWidth,
                       ),
                   ],
-                )
+                ),
               ),
               Expanded(
                 flex: 1,
