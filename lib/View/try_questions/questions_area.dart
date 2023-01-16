@@ -50,7 +50,7 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
             children: <Widget>[
               Expanded(
                 flex: 1,
-                child: Column(
+                child: ListView(
                   children: [
                     Text(popQuestion.text),
                     if(popQuestion.imagePath != '')
