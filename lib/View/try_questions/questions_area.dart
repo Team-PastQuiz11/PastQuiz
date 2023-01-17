@@ -52,25 +52,13 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
                 flex: 1,
                 child: ListView(
                   children: [
-                    // imagePathがでない場合、'問題文と画像'を表示する実装
-                    Visibility(
-                      visible: popQuestion.imagePath != '',
-                      child: Column(
-                        children: [
-                          Text(popQuestion.text),
-                          Image.asset(
-                            popQuestion.imagePath,
-                            width: MediaQuery.of(context).size.width * 0.95,
-                            fit: BoxFit.fitWidth,
-                          ),
-                        ],
+                    Text(popQuestion.text),
+                    if(popQuestion.imagePath != '')
+                      Image.asset(
+                        popQuestion.imagePath,
+                        width: MediaQuery.of(context).size.width * 0.95,
+                        fit: BoxFit.fitWidth,
                       ),
-                    ),
-                    // imagePathが空の場合、'問題文のみ'を表示する実装
-                    Visibility(
-                      visible: popQuestion.imagePath == '',
-                      child: Text(popQuestion.text),
-                    ),
                   ],
                 ),
               ),
