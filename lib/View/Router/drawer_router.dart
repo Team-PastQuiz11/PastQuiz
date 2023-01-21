@@ -24,19 +24,9 @@ class DrawerRouterState extends ConsumerState<DrawerRouter> {
   Widget build(context) {
     final baseP = ref.watch(baseProvider);
 
+    // ignore: unused_local_variable
     final questionP = ref.watch(questionProvider);
-    final popQuestion = baseP.model.popQuestion;
     final drawerScreenManager = baseP.model.drawerScreenManager;
-
-    bool isNumber = (popQuestion == '' || popQuestion == '終了') ? false : true;
-    int? popNum = isNumber ? int.parse(popQuestion) : null;
-    String? popYear = isNumber ? popQuestion.substring(0, 4) : null;
-    String? popIndex = isNumber ? popQuestion.substring(4) : null;
-    int? questionNumber = isNumber ? int.parse(popIndex!) + 1 : null;
-
-    String title = !(isNumber && drawerScreenManager == 0)
-        ? 'タイトル'
-        : '$popYear年 $questionNumber問';
 
     return Scaffold(
       appBar: const CustomAppbar(),
