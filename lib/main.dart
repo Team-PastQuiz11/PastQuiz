@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(context) {
     return const MaterialApp(
-      /// false にすることで画面右上の debug 文字を消すことができる
+      /// false にすることで画面右上の debug  文字を消すことができる
       debugShowCheckedModeBanner: false,
       home: DrawerRouter(),
     );
