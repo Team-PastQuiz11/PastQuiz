@@ -8,7 +8,7 @@ analyzer:
     # const 付け忘れを教えてくれる
     prefer_single_quotes: true
     # カンマ 付け忘れを教えてくれる
-    require_trailing_commas: true
+    # require_trailing_commas: true
 
 linter:
   rules:
