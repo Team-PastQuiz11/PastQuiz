@@ -34,7 +34,7 @@ class StudyStateModel {
     await deleteDatabase(
       join(await getDatabasesPath(), dbName),
     );
-    print('deleteDBok');
+    debugPrint('deleteDBok');
   }
 
   static Future<int> createState({
@@ -53,7 +53,7 @@ class StudyStateModel {
       data,
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
-    print('createID$id');
+    debugPrint('createID$id');
     return id;
   }
 

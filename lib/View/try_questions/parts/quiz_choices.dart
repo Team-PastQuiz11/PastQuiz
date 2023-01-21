@@ -17,7 +17,8 @@ class QuizChoicesState extends ConsumerState<QuizChoices> {
 
   void getRecordHere(String nowQuestion) async {
     specificRecord = await UserRecordsModel.getSpecificRecord(nowQuestion);
-    print(specificRecord);
+
+    debugPrint('$specificRecord');
   }
 
   @override

@@ -23,9 +23,9 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
   @override
   Widget build(context) {
     final baseP = ref.watch(baseProvider);
+    // ignore: unused_local_variable
     final questionP = ref.watch(questionProvider);
 
-    final String quizAnswer = questionP.model.quizAnswer;
 
     final popQuestionStr = baseP.model.popQuestion;
     String popYear = popQuestionStr.substring(0, 4);
