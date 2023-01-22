@@ -1,6 +1,6 @@
 import '../../model/base_model.dart';
 import '../../questions/question.dart';
-import '../../service/database/study_state_db.dart';
+import '../../service/local/study_state_db.dart';
 
 Future<void> studyStart({
   required bool isRemain,

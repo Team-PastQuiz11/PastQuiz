@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:past_questions/model/base_model.dart';
-import 'package:past_questions/service/database/study_state_db.dart';
+import 'package:past_questions/service/local/study_state_db.dart';
 
 import '../try_questions.dart';
 
