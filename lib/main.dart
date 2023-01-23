@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'firebase_options.dart';
 import 'view/router/drawer_router.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     name: 'PastQuiz',
@@ -20,18 +20,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(context) {
-    if (_isUseSignIn) {
-      return const MaterialApp(
-        /// false にすることで画面右上の debug 文字を消すことができる
-        debugShowCheckedModeBanner: false,
-        home: DrawerRouter(),
-      );
-    } else {
-      return const MaterialApp(
-        /// false にすることで画面右上の debug 文字を消すことができる
-        debugShowCheckedModeBanner: false,
-        home: DrawerRouter(),
-      );
-    }
+    return const MaterialApp(
+      /// false にすることで画面右上の debug 文字を消すことができる
+      debugShowCheckedModeBanner: false,
+      home: DrawerRouter(),
+    );
   }
 }
