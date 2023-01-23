@@ -14,7 +14,8 @@ class CustomFloatButton extends ConsumerWidget {
 
   @override
   Widget build(context, ref) {
-    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user =  FirebaseAuth.instance.currentUser;
+    debugPrint(user == null ? 'not signed' : 'is signed');
     final baseP = ref.watch(baseProvider);
     final drawerScreenManager = baseP.model.drawerScreenManager;
     final isEdit = baseP.model.isEdit;
@@ -23,7 +24,6 @@ class CustomFloatButton extends ConsumerWidget {
         ? FloatingActionButton(
             elevation: 7.0, // Add this line
             onPressed: ()async{
-              User? user =  auth.currentUser;
               if(user == null){
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context)

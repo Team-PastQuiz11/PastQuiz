@@ -1,3 +1,5 @@
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_signin_button/button_list.dart';
@@ -19,13 +21,17 @@ class LoginPage extends ConsumerWidget{
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SignInButton(
-        Buttons.Google,
-        onPressed: ()async{
-          await signInWithGoogle(
-            navigate: (){
-              // Navigator.pop(context);
-            },
-          );
+            Buttons.Google,
+            onPressed: ()async{
+            try{
+              final credential = await signInWithGoogle();
+            }on FirebaseAuthException catch(e){
+                print('FirebaseAuthException');
+                print('${e.code}');
+              }on Exception catch (e){
+                print('Exception');
+                print('${e.toString()}');
+              }
         }, 
         
         ),
