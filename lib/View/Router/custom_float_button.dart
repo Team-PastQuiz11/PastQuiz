@@ -24,16 +24,14 @@ class CustomFloatButton extends ConsumerWidget {
         ? FloatingActionButton(
             elevation: 7.0, // Add this line
             onPressed: ()async{
+              baseP.editStateChange(true);
               if(user == null){
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context)
                   => const LoginPage(),
                   ),
                 );
-              }else{
-                baseP.editStateChange(true);
               }
-              
             },
             child: const Icon(Icons.add),
           )

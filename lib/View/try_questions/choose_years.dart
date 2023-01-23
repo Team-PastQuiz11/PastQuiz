@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:past_questions/questions/question.dart';
@@ -87,6 +88,13 @@ class ChooseYearsState extends ConsumerState<ChooseYears> {
             },
             child: const Text('全記録削除'),
           ),
+          ElevatedButton(
+            onPressed: ()async{
+              await FirebaseAuth.instance.signOut();
+              debugPrint('サインアウト');
+            }, 
+            child: Text('サインアウト')
+            ),
           const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

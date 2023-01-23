@@ -12,8 +12,6 @@ class LoginPage extends ConsumerWidget{
 
   @override
   Widget build(BuildContext context,WidgetRef ref){
-    // final baseP = ref.watch(baseProvider);
-    
 
     return Scaffold(
       body:Center(
@@ -24,14 +22,16 @@ class LoginPage extends ConsumerWidget{
             Buttons.Google,
             onPressed: ()async{
             try{
-              final credential = await signInWithGoogle();
+              final credential = await signInWithGoogle().then((value){
+                Navigator.pop(context);
+              });
             }on FirebaseAuthException catch(e){
                 print('FirebaseAuthException');
                 print('${e.code}');
-              }on Exception catch (e){
+            }on Exception catch (e){
                 print('Exception');
                 print('${e.toString()}');
-              }
+            }
         }, 
         
         ),
