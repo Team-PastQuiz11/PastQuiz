@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:past_questions/model/base_model.dart';
 import 'package:past_questions/questions/question.dart';
 import 'package:past_questions/repository/base/study_start.dart';
-import 'package:past_questions/service/database/study_state_db.dart';
+import 'package:past_questions/service/local/study_state_db.dart';
 
 class BaseRepository extends ChangeNotifier {
   BaseModel model = BaseModel(

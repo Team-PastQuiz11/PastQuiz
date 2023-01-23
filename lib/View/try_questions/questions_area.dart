@@ -23,9 +23,9 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
   @override
   Widget build(context) {
     final baseP = ref.watch(baseProvider);
+    // ignore: unused_local_variable
     final questionP = ref.watch(questionProvider);
 
-    final String quizAnswer = questionP.model.quizAnswer;
 
     final popQuestionStr = baseP.model.popQuestion;
     String popYear = popQuestionStr.substring(0, 4);
@@ -34,32 +34,47 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
 
     return FutureBuilder(
       future: (!isFirstLoad && popQuestion.imagePath != '')
+          // if-else文の別の書き方
           ? preImageLoad(popQuestion.imagePath)
           : null,
       builder: (context, snapshot) {
+        // stream接続の現在の状態を確認しているif文
+        // stream待機状態の場合、CircularProgressIndicator()を表示させている
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
-
-        return Stack(
-          children: [
-            Column(
-              children: [
-                Text(popQuestion.text),
-                if (popQuestion.imagePath != '')
-                  Image.asset(
-                    popQuestion.imagePath,
-                    width: MediaQuery.of(context).size.width * 0.95,
-                    fit: BoxFit.fitWidth,
-                  ),
-                const QuizChoices(),
-                const GoNextButton()
-              ],
-            ),
-            const AnswerResult()
-          ],
+        return Scaffold(
+          body: Column(
+            children: <Widget>[
+              Expanded(
+                flex: 1,
+                child: ListView(
+                  children: [
+                    Text(popQuestion.text),
+                    if(popQuestion.imagePath != '')
+                      Image.asset(
+                        popQuestion.imagePath,
+                        width: MediaQuery.of(context).size.width * 0.95,
+                        fit: BoxFit.fitWidth,
+                      ),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    const QuizChoices(),
+                    const GoNextButton(),
+                    const AnswerResult()
+                  ],
+                ),
+              )
+            ],
+          ),
         );
       },
     );
@@ -69,7 +84,7 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
     if (imagePath != '') {
       await precacheImage(AssetImage(imagePath), context);
     }
-
+    // widgetが画面に表示されている場合の処理
     if (mounted) {
       setState(() {
         isFirstLoad = true;

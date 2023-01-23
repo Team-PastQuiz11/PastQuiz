@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "74471463077",
-    "project_id": "pastquiz-66896",
-    "storage_bucket": "pastquiz-66896.appspot.com"
+    "project_number": "638123334577",
+    "project_id": "pastquiz0123",
+    "storage_bucket": "pastquiz0123.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:74471463077:android:3a1bbaf40241415314554c",
+        "mobilesdk_app_id": "1:638123334577:android:2f8049f69d85025a287b90",
         "android_client_info": {
           "package_name": "com.example.past_questions"
         }
       },
       "oauth_client": [
         {
-          "client_id": "74471463077-od7b5h7100ad2cra4athmnulma66g6vr.apps.googleusercontent.com",
+          "client_id": "638123334577-er6bsinui6q1vuh29a5h41ebr5olmb8q.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDcck7n4LwkQGTpijx98Cw6dytWJDVdiUU"
+          "current_key": "AIzaSyDq6MrShJylCJZwCcFdaldl3L086BE527Q"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "74471463077-od7b5h7100ad2cra4athmnulma66g6vr.apps.googleusercontent.com",
+              "client_id": "638123334577-er6bsinui6q1vuh29a5h41ebr5olmb8q.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
