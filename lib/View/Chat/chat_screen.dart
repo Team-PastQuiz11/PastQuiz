@@ -34,7 +34,7 @@ class ChatScreenState extends ConsumerState<ChatScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ChatThreadScreen(),
+                          builder: (context) => const ChatThreadScreen(),
                         ),
                       );
                     },
