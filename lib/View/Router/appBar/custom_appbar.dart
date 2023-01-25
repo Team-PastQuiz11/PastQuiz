@@ -4,9 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../try_questions/try_questions.dart';
 
 class CustomAppbar extends ConsumerWidget implements PreferredSizeWidget {
-  const CustomAppbar({
-    Key? key,
-  }) : super(key: key);
+  const CustomAppbar({super.key});
 
   @override
   Widget build(context, ref) {

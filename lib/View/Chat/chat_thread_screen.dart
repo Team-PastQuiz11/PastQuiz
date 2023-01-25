@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../view/router/appbar/custom_appbar.dart';
+import '../router/appbar/custom_appbar.dart';
 
 class ChatThreadScreen extends StatefulWidget {
   const ChatThreadScreen({Key? key}) : super(key: key);

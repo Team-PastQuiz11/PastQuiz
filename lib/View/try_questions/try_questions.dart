@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:past_questions/repository/base/base_repository.dart';
-import 'package:past_questions/repository/question/question_repository.dart';
 
+import '../../repository/base/base_repository.dart';
+import '../../repository/question/question_repository.dart';
 import 'choose_years.dart';
 import 'questions_area.dart';
 

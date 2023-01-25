@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:past_questions/View/Chat/chat_thread_screen.dart';
 
+import '../chat/chat_thread_screen.dart';
 import '../try_questions/try_questions.dart';
 import 'edit_page.dart';
 
