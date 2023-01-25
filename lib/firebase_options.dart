@@ -10,9 +10,9 @@ import 'package:flutter/foundation.dart'
 /// ```dart
 /// import 'firebase_options.dart';
 /// // ...
-// / await Firebase.initializeApp(
-// /   options: DefaultFirebaseOptions.currentPlatform,
-// / );
+/// await Firebase.initializeApp(
+///   options: DefaultFirebaseOptions.currentPlatform,
+/// );
 /// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
@@ -44,42 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBOLBYurIugPTL7sgvxewjv3BcnZgYLasQ',
-    appId: '1:74471463077:web:d38f908bb14f582e14554c',
-    messagingSenderId: '74471463077',
-    projectId: 'pastquiz-66896',
-    authDomain: 'pastquiz-66896.firebaseapp.com',
-    storageBucket: 'pastquiz-66896.appspot.com',
-    measurementId: 'G-S7Z32L8YVJ',
+    apiKey: 'AIzaSyCLRF_HOtHI0837ibDQ3dXif7pZYSBreM4',
+    appId: '1:638123334577:web:fe95090a0bd931d0287b90',
+    messagingSenderId: '638123334577',
+    projectId: 'pastquiz0123',
+    authDomain: 'pastquiz0123.firebaseapp.com',
+    storageBucket: 'pastquiz0123.appspot.com',
+    measurementId: 'G-V5KPXRWBKJ',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDcck7n4LwkQGTpijx98Cw6dytWJDVdiUU',
-    appId: '1:74471463077:android:3a1bbaf40241415314554c',
-    messagingSenderId: '74471463077',
-    projectId: 'pastquiz-66896',
-    storageBucket: 'pastquiz-66896.appspot.com',
+    apiKey: 'AIzaSyDq6MrShJylCJZwCcFdaldl3L086BE527Q',
+    appId: '1:638123334577:android:2f8049f69d85025a287b90',
+    messagingSenderId: '638123334577',
+    projectId: 'pastquiz0123',
+    storageBucket: 'pastquiz0123.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDOAn-3U0imiIdDNuQhUNU1ZApVgmP5qc8',
-    appId: '1:74471463077:ios:ec55fb19f323eb2b14554c',
-    messagingSenderId: '74471463077',
-    projectId: 'pastquiz-66896',
-    storageBucket: 'pastquiz-66896.appspot.com',
-    iosClientId: 
-        '74471463077-4n4lb15gc768gj0blmmms50ik31lck4b.apps.googleusercontent.com',
+    apiKey: 'AIzaSyD7xHQ3ZDw2v99eITLLNQFzoI8Jit1xPpA',
+    appId: '1:638123334577:ios:c0d6bc73bcd074b4287b90',
+    messagingSenderId: '638123334577',
+    projectId: 'pastquiz0123',
+    storageBucket: 'pastquiz0123.appspot.com',
+    iosClientId: '638123334577-68g1papk310vd093r57ptjsl5nk11sbf.apps.googleusercontent.com',
     iosBundleId: 'com.example.pastQuestions',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDOAn-3U0imiIdDNuQhUNU1ZApVgmP5qc8',
-    appId: '1:74471463077:ios:ec55fb19f323eb2b14554c',
-    messagingSenderId: '74471463077',
-    projectId: 'pastquiz-66896',
-    storageBucket: 'pastquiz-66896.appspot.com',
-    iosClientId: 
-        '74471463077-4n4lb15gc768gj0blmmms50ik31lck4b.apps.googleusercontent.com',
+    apiKey: 'AIzaSyD7xHQ3ZDw2v99eITLLNQFzoI8Jit1xPpA',
+    appId: '1:638123334577:ios:c0d6bc73bcd074b4287b90',
+    messagingSenderId: '638123334577',
+    projectId: 'pastquiz0123',
+    storageBucket: 'pastquiz0123.appspot.com',
+    iosClientId: '638123334577-68g1papk310vd093r57ptjsl5nk11sbf.apps.googleusercontent.com',
     iosBundleId: 'com.example.pastQuestions',
   );
 }
