@@ -10,7 +10,6 @@ class BaseModel {
   int drawerScreenManager;
   bool isEdit;
   // String quizAnswer;
-
 }
 
 List<String> unsolvedQuestions = [];

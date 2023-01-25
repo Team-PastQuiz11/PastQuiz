@@ -13,6 +13,8 @@ final questionProvider =
     ChangeNotifierProvider.autoDispose((ref) => QuestionProvider());
 
 class TryQuestions extends ConsumerWidget {
+  TryQuestions({super.key});
+
   final Map<String, Widget> childMap = {
     '': const ChooseYears(),
     '終了': const Center(
@@ -20,10 +22,8 @@ class TryQuestions extends ConsumerWidget {
     )
   };
 
-  TryQuestions({super.key});
-
   @override
-  Widget build(context, ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final baseP = ref.watch(baseProvider);
     return childMap[baseP.model.popQuestion] ??
         QuestionArea(
