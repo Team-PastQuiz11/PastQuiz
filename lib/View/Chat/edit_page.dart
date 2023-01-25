@@ -7,7 +7,7 @@ class EditPage extends StatelessWidget {
   Widget build(context) {
     return const Scaffold(
       body: Center(
-        child: Text("投稿ページの予定"),
+        child: Text('投稿ページの予定'),
       ),
     );
   }
