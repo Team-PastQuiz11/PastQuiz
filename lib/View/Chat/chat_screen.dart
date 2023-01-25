@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../chat/chat_thread_screen.dart';
+import '../../view/chat/chat_thread_screen.dart';
+import '../../view/chat/edit_page.dart';
 import '../try_questions/try_questions.dart';
-import 'edit_page.dart';
 
 class ChatScreen extends ConsumerStatefulWidget {
   const ChatScreen({super.key});

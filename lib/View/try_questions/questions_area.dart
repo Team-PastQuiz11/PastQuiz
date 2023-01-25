@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../questions/question.dart';
+import '../../view/try_questions/try_questions.dart';
 import 'parts/answer_result.dart';
 import 'parts/go_next_button.dart';
 import 'parts/quiz_choices.dart';
-import 'try_questions.dart';
 
 class QuestionArea extends ConsumerStatefulWidget {
   const QuestionArea({super.key});
