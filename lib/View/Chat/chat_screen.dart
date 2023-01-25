@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:past_questions/View/Chat/chat_thread_screen.dart';
 
 import '../try_questions/try_questions.dart';
 import 'edit_page.dart';
@@ -29,7 +30,14 @@ class ChatScreenState extends ConsumerState<ChatScreen> {
                   child: ListTile(
                     title: const Text('タイトル'),
                     subtitle: const Text('サブタイトル'),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ChatThreadScreen(),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ]
