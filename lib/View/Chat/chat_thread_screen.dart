@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../view/router/appbar/custom_appbar.dart';
 
 class ChatThreadScreen extends StatefulWidget {
@@ -12,8 +13,8 @@ class _ChatThreadScreenState extends State<ChatThreadScreen> {
   @override
   Widget build(context) {
     return Scaffold(
-        appBar: const CustomAppbar(),
-        body: Column(
+      appBar: const CustomAppbar(),
+      body: Column(
         children: [
           Expanded(
             child: ListView(
@@ -52,14 +53,14 @@ class _ChatThreadScreenState extends State<ChatThreadScreen> {
                   padding: const EdgeInsets.only(left: 10.0),
                   child: OutlinedButton(
                     onPressed: () {},
-                    child: Text('投稿'),
+                    child: const Text('投稿'),
                   ),
                 )
               ],
             ),
           ),
         ],
-      )
+      ),
     );
   }
 }
