@@ -67,7 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '74471463077',
     projectId: 'pastquiz-66896',
     storageBucket: 'pastquiz-66896.appspot.com',
-    iosClientId: 
+    iosClientId:
         '74471463077-4n4lb15gc768gj0blmmms50ik31lck4b.apps.googleusercontent.com',
     iosBundleId: 'com.example.pastQuestions',
   );
@@ -78,7 +78,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '74471463077',
     projectId: 'pastquiz-66896',
     storageBucket: 'pastquiz-66896.appspot.com',
-    iosClientId: 
+    iosClientId:
         '74471463077-4n4lb15gc768gj0blmmms50ik31lck4b.apps.googleusercontent.com',
     iosBundleId: 'com.example.pastQuestions',
   );
