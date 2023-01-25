@@ -6,11 +6,13 @@ import 'package:past_questions/repository/question/question_repository.dart';
 import 'choose_years.dart';
 import 'questions_area.dart';
 
-final baseProvider =
-    ChangeNotifierProvider.autoDispose((ref) => BaseRepository());
+final baseProvider = ChangeNotifierProvider.autoDispose(
+  (ref) => BaseRepository(),
+);
 
-final questionProvider =
-    ChangeNotifierProvider.autoDispose((ref) => QuestionProvider());
+final questionProvider = ChangeNotifierProvider.autoDispose(
+  (ref) => QuestionProvider(),
+);
 
 class TryQuestions extends ConsumerWidget {
   TryQuestions({super.key});
