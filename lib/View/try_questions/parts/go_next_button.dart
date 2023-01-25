@@ -18,18 +18,29 @@ class GoNextButton extends ConsumerWidget {
       return const SizedBox.shrink();
     }
 
-    return ElevatedButton(
-      onPressed: () async {
-        questionP.quizAnswerChange('');
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+      width: 500,
+      child: ElevatedButton(
+        // 試験的に'次へ'ボタンを丸くしてみた ------->
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
+        ),
+        // ------------------------------------->
+        onPressed: () async {
+          questionP.quizAnswerChange('');
 
-        if (unsolvedQuestions.isNotEmpty) {
-          List<Map<String, dynamic>> state = await StudyStateModel.getState();
-          baseP.goNextQ(stateId: state[0]['id']);
-        } else {
-          baseP.goEnd();
-        }
-      },
-      child: const Text('次へ'),
+          if (unsolvedQuestions.isNotEmpty) {
+            List<Map<String, dynamic>> state = await StudyStateModel.getState();
+            baseP.goNextQ(stateId: state[0]['id']);
+          } else {
+            baseP.goEnd();
+          }
+        },
+        child: const Text('次へ'),
+      ),
     );
   }
 }

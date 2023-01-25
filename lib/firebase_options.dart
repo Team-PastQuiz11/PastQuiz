@@ -82,4 +82,3 @@ class DefaultFirebaseOptions {
         '74471463077-4n4lb15gc768gj0blmmms50ik31lck4b.apps.googleusercontent.com',
     iosBundleId: 'com.example.pastQuestions',
   );
-}
