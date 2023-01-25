@@ -3,8 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'view/router/drawer_router.dart';
 
-
-
 void main() {
   runApp(
     const ProviderScope(child: MyApp()),
