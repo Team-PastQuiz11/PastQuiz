@@ -1,7 +1,9 @@
 include: package:flutter_lints/flutter.yaml
 
-linter:
-  rules:
+analyzer:
+  errors:
+    # 使われていないプロパティのアラートを削除
+    unused_local_variable: false
     # const 付け忘れを教えてくれる
     prefer_single_quotes: true
     # カンマ 付け忘れを教えてくれる
