@@ -19,7 +19,7 @@ class TryQuestions extends ConsumerWidget {
     '': const ChooseYears(),
     '終了': const Center(
       child: Text('おめでとう'),
-    )
+    ),
   };
 
   @override
