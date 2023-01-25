@@ -33,7 +33,7 @@ class GoNextButton extends ConsumerWidget {
           questionP.quizAnswerChange('');
 
           if (unsolvedQuestions.isNotEmpty) {
-            var state = await StudyStateModel.getState();
+            final state = await StudyStateModel.getState();
             baseP.goNextQ(stateId: state[0]['id']);
           } else {
             baseP.goEnd();

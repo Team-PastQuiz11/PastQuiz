@@ -12,12 +12,12 @@ class CustomAppbar extends ConsumerWidget implements PreferredSizeWidget {
     final popQuestion = baseP.model.popQuestion;
     final drawerScreenManager = baseP.model.drawerScreenManager;
 
-    var isNumber = (popQuestion == '' || popQuestion == '終了') ? false : true;
-    var popYear = isNumber ? popQuestion.substring(0, 4) : null;
-    var popIndex = isNumber ? popQuestion.substring(4) : null;
-    var questionNumber = isNumber ? int.parse(popIndex!) + 1 : null;
+    final isNumber = (popQuestion == '' || popQuestion == '終了') ? false : true;
+    final popYear = isNumber ? popQuestion.substring(0, 4) : null;
+    final popIndex = isNumber ? popQuestion.substring(4) : null;
+    final questionNumber = isNumber ? int.parse(popIndex!) + 1 : null;
 
-    var title = !(isNumber && drawerScreenManager == 0)
+    final title = !(isNumber && drawerScreenManager == 0)
         ? 'タイトル'
         : '$popYear年 $questionNumber問';
 

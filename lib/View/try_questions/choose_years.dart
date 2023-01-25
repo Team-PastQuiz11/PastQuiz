@@ -51,7 +51,7 @@ class ChooseYearsState extends ConsumerState<ChooseYears> {
       );
     }
 
-    var isRemain = state.isNotEmpty ? true : false;
+    final isRemain = state.isNotEmpty ? true : false;
 
     return Center(
       child: Column(
@@ -83,7 +83,7 @@ class ChooseYearsState extends ConsumerState<ChooseYears> {
           ElevatedButton(
             onPressed: () async {
               await UserRecordsModel.deleteAllRecord();
-              _refreshJournals();
+              await _refreshJournals();
             },
             child: const Text('全記録削除'),
           ),

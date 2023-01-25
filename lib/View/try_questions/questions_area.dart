@@ -24,8 +24,8 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
     final questionP = ref.watch(questionProvider);
 
     final popQuestionStr = baseP.model.popQuestion;
-    var popYear = popQuestionStr.substring(0, 4);
-    var popIndex = int.parse(popQuestionStr.substring(4));
+    final popYear = popQuestionStr.substring(0, 4);
+    final popIndex = int.parse(popQuestionStr.substring(4));
     final popQuestion = yearMap[popYear]![popIndex];
 
     return FutureBuilder(
