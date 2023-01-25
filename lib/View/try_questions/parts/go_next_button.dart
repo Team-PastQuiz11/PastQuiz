@@ -24,8 +24,10 @@ class GoNextButton extends ConsumerWidget {
       child: ElevatedButton(
         // 試験的に'次へ'ボタンを丸くしてみた ------->
         style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),),),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
+        ),
         // ------------------------------------->
         onPressed: () async {
           questionP.quizAnswerChange('');
