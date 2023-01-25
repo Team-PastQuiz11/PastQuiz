@@ -8,9 +8,7 @@ import 'parts/quiz_choices.dart';
 import 'try_questions.dart';
 
 class QuestionArea extends ConsumerStatefulWidget {
-  const QuestionArea({
-    Key? key,
-  }) : super(key: key);
+  const QuestionArea({super.key});
 
   @override
   ConsumerState<QuestionArea> createState() => QuestionAreaState();
@@ -23,7 +21,6 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
   @override
   Widget build(context) {
     final baseP = ref.watch(baseProvider);
-    // ignore: unused_local_variable
     final questionP = ref.watch(questionProvider);
 
     final popQuestionStr = baseP.model.popQuestion;
@@ -68,10 +65,10 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
                   children: [
                     const QuizChoices(),
                     const GoNextButton(),
-                    const AnswerResult()
+                    const AnswerResult(),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         );
@@ -90,7 +87,6 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
       });
     }
   }
-
   // void getRecordHere(String popQuestion) async{
   //   specificRecord = await UserRecordsModel.getSpecificRecord(popQuestion);
   // }
