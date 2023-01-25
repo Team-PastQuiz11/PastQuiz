@@ -22,7 +22,7 @@ class ChooseYearsState extends ConsumerState<ChooseYears> {
   List<Map<String, dynamic>> recordsTrue = [];
   bool isLoading = true;
 
-  void _refreshJournals() async {
+  Future<void> _refreshJournals() async {
     final stateData = await StudyStateModel.getState();
     final recordsData = await UserRecordsModel.getRecordsList();
     final recordsTrueData = await UserRecordsModel.getRecordsListTrue();
@@ -42,7 +42,7 @@ class ChooseYearsState extends ConsumerState<ChooseYears> {
   }
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     final baseP = ref.watch(baseProvider);
 
     if (isLoading) {
@@ -51,7 +51,7 @@ class ChooseYearsState extends ConsumerState<ChooseYears> {
       );
     }
 
-    bool isRemain = state.isNotEmpty ? true : false;
+    var isRemain = state.isNotEmpty ? true : false;
 
     return Center(
       child: Column(

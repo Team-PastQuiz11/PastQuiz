@@ -1,10 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:past_questions/model/base_model.dart';
-import 'package:past_questions/questions/question.dart';
-import 'package:past_questions/repository/base/study_start.dart';
-import 'package:past_questions/service/database/study_state_db.dart';
+
+import '../../model/base_model.dart';
+import '../../questions/question.dart';
+import '../../service/database/study_state_db.dart';
+import 'study_start.dart';
 
 class BaseRepository extends ChangeNotifier {
   BaseModel model = BaseModel(
@@ -31,7 +32,10 @@ class BaseRepository extends ChangeNotifier {
 
   int uselessStateId = -999;
 
-  void determineYear({required String year, required bool isRemain}) async {
+  Future<void> determineYear({
+    required String year,
+    required bool isRemain,
+  }) async {
     await studyStart(
       isRemain: isRemain,
       popQuestion: model.popQuestion,
@@ -50,7 +54,7 @@ class BaseRepository extends ChangeNotifier {
     unsolvedQuestions.remove(model.popQuestion);
 
     // String unsolved16 = c.hex.encode(unsolvedNumbers);
-    String unSolvedStr = unsolvedQuestions.join(',');
+    final unSolvedStr = unsolvedQuestions.join(',');
 
     if (!isStart) {
       StudyStateModel.updateState(

@@ -7,14 +7,14 @@ class CustomFloatButton extends ConsumerWidget {
   const CustomFloatButton({super.key});
 
   @override
-  Widget build(context, ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final baseP = ref.watch(baseProvider);
     final drawerScreenManager = baseP.model.drawerScreenManager;
     final isEdit = baseP.model.isEdit;
 
     return (drawerScreenManager == 1 && !isEdit)
         ? FloatingActionButton(
-            elevation: 7.0, // Add this line
+            elevation: 7, // Add this line
             onPressed: () {
               baseP.editStateChange(true);
             },

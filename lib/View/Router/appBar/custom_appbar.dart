@@ -7,17 +7,17 @@ class CustomAppbar extends ConsumerWidget implements PreferredSizeWidget {
   const CustomAppbar({super.key});
 
   @override
-  Widget build(context, ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final baseP = ref.watch(baseProvider);
     final popQuestion = baseP.model.popQuestion;
     final drawerScreenManager = baseP.model.drawerScreenManager;
 
-    bool isNumber = (popQuestion == '' || popQuestion == '終了') ? false : true;
-    String? popYear = isNumber ? popQuestion.substring(0, 4) : null;
-    String? popIndex = isNumber ? popQuestion.substring(4) : null;
-    int? questionNumber = isNumber ? int.parse(popIndex!) + 1 : null;
+    var isNumber = (popQuestion == '' || popQuestion == '終了') ? false : true;
+    var popYear = isNumber ? popQuestion.substring(0, 4) : null;
+    var popIndex = isNumber ? popQuestion.substring(4) : null;
+    var questionNumber = isNumber ? int.parse(popIndex!) + 1 : null;
 
-    String title = !(isNumber && drawerScreenManager == 0)
+    var title = !(isNumber && drawerScreenManager == 0)
         ? 'タイトル'
         : '$popYear年 $questionNumber問';
 

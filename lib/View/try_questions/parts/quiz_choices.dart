@@ -15,20 +15,20 @@ class QuizChoices extends ConsumerStatefulWidget {
 class QuizChoicesState extends ConsumerState<QuizChoices> {
   List<Map<String, dynamic>> specificRecord = [];
 
-  void getRecordHere(String nowQuestion) async {
+  Future<void> getRecordHere(String nowQuestion) async {
     specificRecord = await UserRecordsModel.getSpecificRecord(nowQuestion);
   }
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     final baseP = ref.watch(baseProvider);
     final questionP = ref.watch(questionProvider);
 
-    final String quizAnswer = questionP.model.quizAnswer;
+    final quizAnswer = questionP.model.quizAnswer;
 
     final popQuestionStr = baseP.model.popQuestion;
-    String popYear = popQuestionStr.substring(0, 4);
-    int popIndex = int.parse(popQuestionStr.substring(4));
+    var popYear = popQuestionStr.substring(0, 4);
+    var popIndex = int.parse(popQuestionStr.substring(4));
     final popQuestion = yearMap[popYear]![popIndex];
 
     getRecordHere(popQuestionStr);

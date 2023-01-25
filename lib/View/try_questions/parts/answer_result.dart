@@ -7,7 +7,7 @@ class AnswerResult extends ConsumerWidget {
   const AnswerResult({super.key});
 
   @override
-  Widget build(context, ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final questionP = ref.watch(questionProvider);
     final quizAnswer = questionP.model.quizAnswer;
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../router/appbar/custom_appbar.dart';
 
 class ChatThreadScreen extends StatefulWidget {
-  const ChatThreadScreen({Key? key}) : super(key: key);
+  const ChatThreadScreen({super.key});
 
   @override
   State<ChatThreadScreen> createState() => _ChatThreadScreenState();
@@ -11,7 +11,7 @@ class ChatThreadScreen extends StatefulWidget {
 
 class _ChatThreadScreenState extends State<ChatThreadScreen> {
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppbar(),
       body: Column(
@@ -50,7 +50,7 @@ class _ChatThreadScreenState extends State<ChatThreadScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 10),
                   child: OutlinedButton(
                     onPressed: () {},
                     child: const Text('投稿'),

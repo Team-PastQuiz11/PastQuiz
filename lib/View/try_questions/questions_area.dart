@@ -19,13 +19,13 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
   List<Map<String, dynamic>> specificRecord = [];
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     final baseP = ref.watch(baseProvider);
     final questionP = ref.watch(questionProvider);
 
     final popQuestionStr = baseP.model.popQuestion;
-    String popYear = popQuestionStr.substring(0, 4);
-    int popIndex = int.parse(popQuestionStr.substring(4));
+    var popYear = popQuestionStr.substring(0, 4);
+    var popIndex = int.parse(popQuestionStr.substring(4));
     final popQuestion = yearMap[popYear]![popIndex];
 
     return FutureBuilder(

@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return const MaterialApp(
       /// false にすることで画面右上の debug 文字を消すことができる
       debugShowCheckedModeBanner: false,
