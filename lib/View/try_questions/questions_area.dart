@@ -26,7 +26,6 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
     // ignore: unused_local_variable
     final questionP = ref.watch(questionProvider);
 
-
     final popQuestionStr = baseP.model.popQuestion;
     String popYear = popQuestionStr.substring(0, 4);
     int popIndex = int.parse(popQuestionStr.substring(4));
@@ -53,7 +52,7 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
                 child: ListView(
                   children: [
                     Text(popQuestion.text),
-                    if(popQuestion.imagePath != '')
+                    if (popQuestion.imagePath != '')
                       Image.asset(
                         popQuestion.imagePath,
                         width: MediaQuery.of(context).size.width * 0.95,
