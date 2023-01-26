@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:past_questions/views/try_questions/try_questions.dart';
 
 import '../../questions/question.dart';
-import '../../view/try_questions/try_questions.dart';
 import 'parts/answer_result.dart';
 import 'parts/go_next_button.dart';
 import 'parts/quiz_choices.dart';

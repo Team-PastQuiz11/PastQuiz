@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'view/router/drawer_router.dart';
+import 'views/router/drawer_router.dart';
 
 void main() {
   runApp(

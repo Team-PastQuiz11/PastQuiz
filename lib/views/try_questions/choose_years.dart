@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../questions/question.dart';
 import '../../service/database/study_state_db.dart';
 import '../../service/database/user_records_db.dart';
-import '../../view/try_questions/try_questions.dart';
+import 'try_questions.dart';
 
 class ChooseYears extends ConsumerStatefulWidget {
   const ChooseYears({super.key});

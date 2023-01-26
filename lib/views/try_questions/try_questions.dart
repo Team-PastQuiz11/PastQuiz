@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../repository/base/base_repository.dart';
 import '../../repository/question/question_repository.dart';
-import '../../view/try_questions/choose_years.dart';
-import '../../view/try_questions/questions_area.dart';
+import 'choose_years.dart';
+import 'questions_area.dart';
 
 final baseProvider = ChangeNotifierProvider.autoDispose(
   (ref) => BaseRepository(),
