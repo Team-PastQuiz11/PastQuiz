@@ -36,7 +36,7 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
     // ignore: dead_code
     const colorArea = isDebug ? Colors.white : Colors.transparent;
     // ignore: dead_code
-    final colorBackground = isDebug ? Colors.amber[100] : Colors.white;
+    final colorBackground = isDebug ? Colors.grey[100] : Colors.amber[25];
 
     return FutureBuilder(
       future: (!isFirstLoad && popQuestion.imagePath != '')
