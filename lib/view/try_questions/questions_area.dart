@@ -28,6 +28,9 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
     final popIndex = int.parse(popQuestionStr.substring(4));
     final popQuestion = yearMap[popYear]![popIndex];
 
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return FutureBuilder(
       future: (!isFirstLoad && popQuestion.imagePath != '')
           // if-else文の別の書き方
@@ -42,34 +45,59 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
           );
         }
         return Scaffold(
-          body: Column(
-            children: <Widget>[
-              Expanded(
-                flex: 1,
-                child: ListView(
-                  children: [
-                    Text(popQuestion.text),
-                    if (popQuestion.imagePath != '')
-                      Image.asset(
-                        popQuestion.imagePath,
-                        width: MediaQuery.of(context).size.width * 0.95,
-                        fit: BoxFit.fitWidth,
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: <Widget>[
+                // 問題 領域 (最大:画面上部50%)
+                ConstrainedBox(
+                  constraints:
+                      BoxConstraints.loose(Size(screenWidth, screenHeight / 2)),
+                  child: ListView(
+                    children: [
+                      // 問題 本文
+                      Text(popQuestion.text),
+                      const SizedBox(height: 8.0),
+                      // 問題 付図
+                      if (popQuestion.imagePath != '')
+                        Column(
+                          children: [
+                            Image.asset(
+                              popQuestion.imagePath,
+                              width: MediaQuery.of(context).size.width * 0.95,
+                              fit: BoxFit.fitWidth,
+                            ),
+                            const SizedBox(height: 8.0),
+                          ],
+                        ),
+                      // 区切り線
+                      Container(
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: Colors.black,
+                              width: 1,
+                            ),
+                          ),
+                        ),
                       ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  // ignore: prefer_const_literals_to_create_immutables
-                  children: [
-                    const QuizChoices(),
-                    const GoNextButton(),
-                    const AnswerResult(),
-                  ],
+                // 回答 領域
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: [
+                      const QuizChoices(),
+                      const GoNextButton(),
+                      const AnswerResult(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
