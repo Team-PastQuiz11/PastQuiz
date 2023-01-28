@@ -37,10 +37,10 @@ class QuizChoicesState extends ConsumerState<QuizChoices> {
       children: [
         for (var i = 0; i < 4; i++) ...[
           Container(
-            // 横幅指定　左右に16px、上下に0.5pxの隙間を開ける
+            // 横幅指定 左右に16px、上下に0.5pxの隙間を開ける
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 0.5),
             width: 500,
-            // 選択肢ボタンを横の揃える
+            // 選択肢ボタンを左寄りに揃える
             alignment: Alignment.centerLeft,
             child: ElevatedButton(
               onPressed: quizAnswer == ''
