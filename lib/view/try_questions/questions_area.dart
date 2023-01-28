@@ -28,8 +28,15 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
     final popIndex = int.parse(popQuestionStr.substring(4));
     final popQuestion = yearMap[popYear]![popIndex];
 
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
+    const paddingScreen = 16.0;
+    const marginAreaBottom = 8.0;
+
+    // for Debug
+    const isDebug = false;
+    // ignore: dead_code
+    const colorArea = isDebug ? Colors.white : Colors.transparent;
+    // ignore: dead_code
+    final colorBackground = isDebug ? Colors.amber[100] : Colors.white;
 
     return FutureBuilder(
       future: (!isFirstLoad && popQuestion.imagePath != '')
@@ -45,58 +52,131 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
           );
         }
         return Scaffold(
-          body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: <Widget>[
-                // 問題 領域 (最大:画面上部50%)
-                ConstrainedBox(
-                  constraints:
-                      BoxConstraints.loose(Size(screenWidth, screenHeight / 2)),
-                  child: ListView(
-                    children: [
-                      // 問題 本文
-                      Text(popQuestion.text),
-                      const SizedBox(height: 8.0),
-                      // 問題 付図
-                      if (popQuestion.imagePath != '')
+          body: Container(
+            color: colorBackground,
+            child: Padding(
+              padding: const EdgeInsets.all(paddingScreen),
+              child: Column(
+                children: <Widget>[
+                  // 問題情報 領域
+                  Container(
+                    color: colorArea,
+                    child: Row(
+                      children: [
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset(
-                              popQuestion.imagePath,
-                              width: MediaQuery.of(context).size.width * 0.95,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            const SizedBox(height: 8.0),
+                            Container(
+                                margin: const EdgeInsets.all(1.0),
+                                child: const Text('この問題何回目: ...')),
+                            Container(
+                                margin: const EdgeInsets.all(1.0),
+                                child: const Text('全体正解率:100%')),
                           ],
                         ),
-                      // 区切り線
-                      Container(
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Colors.black,
-                              width: 1,
+                        const Spacer(),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.all(1.0),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 5, vertical: 1.0),
+                              decoration: BoxDecoration(
+                                color: Colors.pink[300],
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: const Text('アルゴリズムとプログラミング'),
                             ),
-                          ),
+                            const SizedBox(
+                              height: 1,
+                            ),
+                            Container(
+                              margin: const EdgeInsets.all(1.0),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 5, vertical: 1.0),
+                              decoration: BoxDecoration(
+                                color: Colors.purple[300],
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: const Text('テクノロジー'),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: marginAreaBottom),
+                  // 区切り線
+                  Container(
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: Color(0xFF333333),
+                          width: 1,
                         ),
                       ),
-                    ],
+                    ),
                   ),
-                ),
-                // 回答 領域
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      const QuizChoices(),
-                      const GoNextButton(),
-                      const AnswerResult(),
-                    ],
+                  const SizedBox(height: marginAreaBottom),
+                  // 問題 領域 (最大:画面上部50%)
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      color: colorArea,
+                      child: ListView(
+                        children: [
+                          // 問題 本文
+                          Text(popQuestion.text),
+                          const SizedBox(height: 8.0),
+                          // 問題 付図
+                          if (popQuestion.imagePath != '')
+                            Column(
+                              children: [
+                                Image.asset(
+                                  popQuestion.imagePath,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.95,
+                                  fit: BoxFit.fitWidth,
+                                ),
+                                const SizedBox(height: 8.0),
+                              ],
+                            ),
+                          // 区切り線
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: marginAreaBottom),
+                  // 区切り線
+                  Container(
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: Color(0xFF333333),
+                          width: 1,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: marginAreaBottom),
+                  // 回答 領域
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      color: colorArea,
+                      child: Column(
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: [
+                          const QuizChoices(),
+                          const GoNextButton(),
+                          const AnswerResult(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         );
