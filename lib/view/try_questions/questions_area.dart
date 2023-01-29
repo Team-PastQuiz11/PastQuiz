@@ -142,7 +142,6 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
                                 const SizedBox(height: 8.0),
                               ],
                             ),
-                          // 区切り線
                         ],
                       ),
                     ),
