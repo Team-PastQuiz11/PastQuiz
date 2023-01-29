@@ -3,9 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:past_questions/view/try_questions/try_questions.dart';
 
 import '../../questions/question.dart';
-import 'parts/answer_result.dart';
-import 'parts/go_next_button.dart';
+import 'parts/quiz_answer_result.dart';
 import 'parts/quiz_choices.dart';
+import 'parts/quiz_devider.dart';
+import 'parts/quiz_go_next_button.dart';
+import 'parts/quiz_question_info.dart';
+import 'parts/quiz_question.dart';
 
 class QuestionArea extends ConsumerStatefulWidget {
   const QuestionArea({super.key});
@@ -30,13 +33,12 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
 
     const paddingScreen = 16.0;
     const marginAreaBottom = 8.0;
-
     // for Debug
     const isDebug = false;
     // ignore: dead_code
-    const colorArea = isDebug ? Colors.white : Colors.transparent;
+    const debugColorArea = isDebug ? Colors.white : Colors.transparent;
     // ignore: dead_code
-    final colorBackground = isDebug ? Colors.grey[100] : Colors.amber[25];
+    final debugColorBackground = isDebug ? Colors.grey[100] : Colors.amber[25];
 
     return FutureBuilder(
       future: (!isFirstLoad && popQuestion.imagePath != '')
@@ -53,123 +55,38 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
         }
         return Scaffold(
           body: Container(
-            color: colorBackground,
+            color: debugColorBackground,
             child: Padding(
               padding: const EdgeInsets.all(paddingScreen),
               child: Column(
-                children: <Widget>[
-                  // 問題情報 領域
-                  Container(
-                    color: colorArea,
-                    child: Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                                margin: const EdgeInsets.all(1.0),
-                                child: const Text('この問題何回目: ...')),
-                            Container(
-                                margin: const EdgeInsets.all(1.0),
-                                child: const Text('全体正解率:100%')),
-                          ],
-                        ),
-                        const Spacer(),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.all(1.0),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 5, vertical: 1.0),
-                              decoration: BoxDecoration(
-                                color: Colors.pink[300],
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: const Text('アルゴリズムとプログラミング'),
-                            ),
-                            const SizedBox(
-                              height: 1,
-                            ),
-                            Container(
-                              margin: const EdgeInsets.all(1.0),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 5, vertical: 1.0),
-                              decoration: BoxDecoration(
-                                color: Colors.purple[300],
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: const Text('テクノロジー'),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                children: [
+                  const ColoredBox(
+                    color: debugColorArea,
+                    child: QuizQuestionInfo(),
                   ),
                   const SizedBox(height: marginAreaBottom),
-                  // 区切り線
-                  Container(
-                    decoration: const BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Color(0xFF333333),
-                          width: 1,
-                        ),
-                      ),
-                    ),
-                  ),
+                  const QuizDevider(),
                   const SizedBox(height: marginAreaBottom),
-                  // 問題 領域 (最大:画面上部50%)
                   Expanded(
                     flex: 1,
-                    child: Container(
-                      color: colorArea,
+                    child: ColoredBox(
+                      color: debugColorArea,
+                      child: QuizQuestion(popQuestion: popQuestion),
+                    ),
+                  ),
+                  const SizedBox(height: marginAreaBottom),
+                  const QuizDevider(),
+                  const SizedBox(height: marginAreaBottom),
+                  Expanded(
+                    flex: 1,
+                    child: ColoredBox(
+                      color: debugColorArea,
                       child: ListView(
-                        children: [
-                          // 問題 本文
-                          Text(popQuestion.text),
-                          const SizedBox(height: 8.0),
-                          // 問題 付図
-                          if (popQuestion.imagePath != '')
-                            Column(
-                              children: [
-                                Image.asset(
-                                  popQuestion.imagePath,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.95,
-                                  fit: BoxFit.fitWidth,
-                                ),
-                                const SizedBox(height: 8.0),
-                              ],
-                            ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: marginAreaBottom),
-                  // 区切り線
-                  Container(
-                    decoration: const BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Color(0xFF333333),
-                          width: 1,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: marginAreaBottom),
-                  // 回答 領域
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      color: colorArea,
-                      child: Column(
                         // ignore: prefer_const_literals_to_create_immutables
                         children: [
                           const QuizChoices(),
-                          const GoNextButton(),
-                          const AnswerResult(),
+                          const QuizGoNextButton(),
+                          const QuizAnswerResult(),
                         ],
                       ),
                     ),

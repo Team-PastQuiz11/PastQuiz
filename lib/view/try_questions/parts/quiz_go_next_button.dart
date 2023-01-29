@@ -5,8 +5,8 @@ import '../../../model/base_model.dart';
 import '../../../service/database/study_state_db.dart';
 import '../try_questions.dart';
 
-class GoNextButton extends ConsumerWidget {
-  const GoNextButton({super.key});
+class QuizGoNextButton extends ConsumerWidget {
+  const QuizGoNextButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
