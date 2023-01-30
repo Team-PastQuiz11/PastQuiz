@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class QuizDevider extends StatelessWidget {
-  const QuizDevider({
+class QuizDivider extends StatelessWidget {
+  const QuizDivider({
     Key? key,
   }) : super(key: key);
 
