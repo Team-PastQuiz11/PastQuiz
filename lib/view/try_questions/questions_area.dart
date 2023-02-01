@@ -5,7 +5,7 @@ import 'package:past_questions/view/try_questions/try_questions.dart';
 import '../../questions/question.dart';
 import 'parts/quiz_answer_result.dart';
 import 'parts/quiz_choices.dart';
-import 'parts/quiz_devider.dart';
+import 'parts/quiz_divider.dart';
 import 'parts/quiz_go_next_button.dart';
 import 'parts/quiz_question_info.dart';
 import 'parts/quiz_question.dart';
