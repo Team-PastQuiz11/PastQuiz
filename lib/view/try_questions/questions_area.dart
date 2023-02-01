@@ -65,7 +65,7 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
                     child: QuizQuestionInfo(),
                   ),
                   const SizedBox(height: marginAreaBottom),
-                  const QuizDevider(),
+                  const QuizDivider(),
                   const SizedBox(height: marginAreaBottom),
                   Expanded(
                     flex: 1,
@@ -75,7 +75,7 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
                     ),
                   ),
                   const SizedBox(height: marginAreaBottom),
-                  const QuizDevider(),
+                  const QuizDivider(),
                   const SizedBox(height: marginAreaBottom),
                   Expanded(
                     flex: 1,
