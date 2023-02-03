@@ -33,46 +33,83 @@ class QuizChoicesState extends ConsumerState<QuizChoices> {
 
     getRecordHere(popQuestionStr);
 
+    const textAiueo = ['ア', 'イ', 'ウ', 'エ', 'オ'];
+    const sizeAiueo = 30.0;
+    const colorAiueoBackground = Colors.white;
+    const colorChoice = Colors.orange;
+    const radiusRect = 15.0;
+    const paddingChoiseString =
+        EdgeInsets.only(left: 15, top: 2, bottom: 2, right: 2);
+
     return Column(
       children: [
         for (var i = 0; i < 4; i++) ...[
-          Container(
-            // 横幅指定　左右に16px、上下に0.5pxの隙間を開ける
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 0.5),
-            width: 500,
-            // 選択肢ボタンを横の揃える
-            alignment: Alignment.centerLeft,
-            child: ElevatedButton(
-              onPressed: quizAnswer == ''
-                  ? () {
-                      // 回答選択肢が問題の正解だった場合'正解'、そうでない場合'不正解'を返す三項演算子
-                      questionP.quizAnswerChange(
-                        i == popQuestion.answer ? '正解' : '不正解',
-                      );
-
-                      // 成績の有無によってDBに成績を作成するか、既存の成績を更新するかの三項演算子
-                      specificRecord.isNotEmpty
-                          ? UserRecordsModel.updateRecord(
-                              popQuestionStr,
-                              i == popQuestion.answer ? 0 : 1,
-                            )
-                          : UserRecordsModel.createRecord(
-                              popQuestionStr: popQuestionStr,
-                              isCorrect: i == popQuestion.answer ? 0 : 1,
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // アイウエ部
+                Container(
+                  width: 50,
+                  alignment: Alignment.centerLeft,
+                  decoration: const BoxDecoration(
+                    color: colorChoice,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(radiusRect),
+                      bottomLeft: Radius.circular(radiusRect),
+                    ),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      backgroundColor: colorAiueoBackground,
+                      minimumSize: const Size(sizeAiueo, sizeAiueo),
+                    ),
+                    onPressed: quizAnswer == ''
+                        ? () {
+                            // 回答選択肢が問題の正解だった場合'正解'、そうでない場合'不正解'を返す三項演算子
+                            questionP.quizAnswerChange(
+                              i == popQuestion.answer ? '正解' : '不正解',
                             );
-                    }
-                  // quizAnswerが空ではなかった場合の処理は無い
-                  // ここもう少しスマートに書けたりしないかな？
-                  : null,
-              child: Container(
-                // ボタンの文字を左寄りに
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  popQuestion.choices[i],
+                            // 成績の有無によってDBに成績を作成するか、既存の成績を更新するかの三項演算子
+                            specificRecord.isNotEmpty
+                                ? UserRecordsModel.updateRecord(
+                                    popQuestionStr,
+                                    i == popQuestion.answer ? 0 : 1,
+                                  )
+                                : UserRecordsModel.createRecord(
+                                    popQuestionStr: popQuestionStr,
+                                    isCorrect: i == popQuestion.answer ? 0 : 1,
+                                  );
+                          }
+                        // quizAnswerが空ではなかった場合の処理は無い
+                        // ここもう少しスマートに書けたりしないかな？
+                        : null,
+                    child: Text(textAiueo[i]),
+                  ),
                 ),
-              ),
+                // 選択肢文章部
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    padding: paddingChoiseString,
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: colorChoice),
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(radiusRect),
+                        bottomRight: Radius.circular(radiusRect),
+                      ),
+                    ),
+                    child: Text(
+                      popQuestion.choices[i],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          )
+          ),
+          const SizedBox(height: 10),
         ],
       ],
     );

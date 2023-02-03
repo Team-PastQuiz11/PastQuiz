@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../try_questions.dart';
 
-class AnswerResult extends ConsumerWidget {
-  const AnswerResult({super.key});
+class QuizAnswerResult extends ConsumerWidget {
+  const QuizAnswerResult({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -3,9 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:past_questions/view/try_questions/try_questions.dart';
 
 import '../../questions/question.dart';
-import 'parts/answer_result.dart';
-import 'parts/go_next_button.dart';
+import 'parts/quiz_answer_result.dart';
 import 'parts/quiz_choices.dart';
+import 'parts/quiz_divider.dart';
+import 'parts/quiz_go_next_button.dart';
+import 'parts/quiz_question_info.dart';
+import 'parts/quiz_question.dart';
 
 class QuestionArea extends ConsumerStatefulWidget {
   const QuestionArea({super.key});
@@ -28,6 +31,15 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
     final popIndex = int.parse(popQuestionStr.substring(4));
     final popQuestion = yearMap[popYear]![popIndex];
 
+    const paddingScreen = 16.0;
+    const marginAreaBottom = 8.0;
+    // for Debug
+    const isDebug = false;
+    // ignore: dead_code
+    const debugColorArea = isDebug ? Colors.white : Colors.transparent;
+    // ignore: dead_code
+    final debugColorBackground = isDebug ? Colors.grey[100] : Colors.amber[25];
+
     return FutureBuilder(
       future: (!isFirstLoad && popQuestion.imagePath != '')
           // if-else文の別の書き方
@@ -42,34 +54,46 @@ class QuestionAreaState extends ConsumerState<QuestionArea> {
           );
         }
         return Scaffold(
-          body: Column(
-            children: <Widget>[
-              Expanded(
-                flex: 1,
-                child: ListView(
-                  children: [
-                    Text(popQuestion.text),
-                    if (popQuestion.imagePath != '')
-                      Image.asset(
-                        popQuestion.imagePath,
-                        width: MediaQuery.of(context).size.width * 0.95,
-                        fit: BoxFit.fitWidth,
+          body: Container(
+            color: debugColorBackground,
+            child: Padding(
+              padding: const EdgeInsets.all(paddingScreen),
+              child: Column(
+                children: [
+                  const ColoredBox(
+                    color: debugColorArea,
+                    child: QuizQuestionInfo(),
+                  ),
+                  const SizedBox(height: marginAreaBottom),
+                  const QuizDivider(),
+                  const SizedBox(height: marginAreaBottom),
+                  Expanded(
+                    flex: 1,
+                    child: ColoredBox(
+                      color: debugColorArea,
+                      child: QuizQuestion(popQuestion: popQuestion),
+                    ),
+                  ),
+                  const SizedBox(height: marginAreaBottom),
+                  const QuizDivider(),
+                  const SizedBox(height: marginAreaBottom),
+                  Expanded(
+                    flex: 1,
+                    child: ColoredBox(
+                      color: debugColorArea,
+                      child: ListView(
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: [
+                          const QuizChoices(),
+                          const QuizGoNextButton(),
+                          const QuizAnswerResult(),
+                        ],
                       ),
-                  ],
-                ),
+                    ),
+                  ),
+                ],
               ),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  // ignore: prefer_const_literals_to_create_immutables
-                  children: [
-                    const QuizChoices(),
-                    const GoNextButton(),
-                    const AnswerResult(),
-                  ],
-                ),
-              ),
-            ],
+            ),
           ),
         );
       },

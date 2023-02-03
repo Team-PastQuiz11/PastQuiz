@@ -14,10 +14,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       /// false にすることで画面右上の debug 文字を消すことができる
       debugShowCheckedModeBanner: false,
-      home: DrawerRouter(),
+      theme: ThemeData(
+        primarySwatch: Colors.orange,
+      ),
+      home: const DrawerRouter(),
     );
   }
 }
