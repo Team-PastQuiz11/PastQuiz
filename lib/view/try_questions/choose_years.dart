@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:past_questions/View/try_questions/test_choice/test_choice.dart';
+import 'package:past_questions/questions/question.dart';
+import 'package:past_questions/service/database/study_state_db.dart';
+import 'package:past_questions/service/database/user_records_db.dart';
 
 import '../../questions/question.dart';
 import '../../service/database/study_state_db.dart';
@@ -86,6 +90,17 @@ class ChooseYearsState extends ConsumerState<ChooseYears> {
               await _refreshJournals();
             },
             child: const Text('全記録削除'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TestChoiceScreen(),
+                ),
+              );
+            },
+            child: const Text('asano'),
           ),
           const Spacer(),
           Row(

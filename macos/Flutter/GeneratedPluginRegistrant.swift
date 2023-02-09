@@ -7,6 +7,7 @@ import Foundation
 
 import firebase_core
 import path_provider_macos
+import path_provider_foundation
 import sqflite
 import sqlite3_flutter_libs
 
