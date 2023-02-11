@@ -85,21 +85,18 @@ class User {
   User({required this.name, required this.avatar});
 }
 
-// スレッド一覧画面のプロバイダー
-final ChatThreadScreenProvider = StateNotifierProvider((ref) => MessagesController());
-
 // ここでスレッド一覧画面の状態管理
 class ChatThreadScreenController extends StateNotifier<List<ChatTile>> {
   ChatThreadScreenController() : super([]);
-
-  @override
-  // MessagesPageクラスで`state`を参照するためのgetterを定義
-  List<ChatTile> get state => super.state;
 
   void addMessage(ChatTile message) {
     state = [...state, message];
   }
 }
+
+// スレッド一覧画面のプロバイダー
+final ChatThreadScreenProvider =
+    StateNotifierProvider((ref) => ChatThreadScreenController());
 
 // 画面表示本体
 class ChatThreadScreen extends ConsumerWidget {
@@ -107,24 +104,27 @@ class ChatThreadScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final messagesController = ref.watch(ChatThreadScreenProvider) as ChatThreadScreenController;
-    final messages = messagesController.state;
+    final chatThreads = ref.watch(ChatThreadScreenProvider);
 
     return Scaffold(
       appBar: const CustomAppbar(),
-      body: ListView.builder(
-        itemCount: messages.length,
-        itemBuilder: (context, index) {
-          final message = messages[index];
-          return ListTile(
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(message.user.avatar),
+      body: chatThreads == null
+          ? const Center(
+              child: Text("スレッドが存在しません"),
+            )
+          : ListView.builder(
+              itemCount: chatThreads.length,
+              itemBuilder: (context, index) {
+                final message = chatThreads[index];
+                return ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(message.user.avatar),
+                  ),
+                  title: Text(message.user.name),
+                  subtitle: Text(message.text),
+                );
+              },
             ),
-            title: Text(message.user.name),
-            subtitle: Text(message.text),
-          );
-        },
-      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Add a message
