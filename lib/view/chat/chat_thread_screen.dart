@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -69,11 +71,11 @@ import '../router/appbar/custom_appbar.dart';
 // ↓↓↓↓↓ まだ責務分離をしていない ↓↓↓↓↓
 
 // スレッドタイルのモデル
-class Message {
+class ChatTile {
   final User user;
   final String text;
 
-  Message({required this.user, required this.text});
+  ChatTile({required this.user, required this.text});
 }
 
 class User {
@@ -84,28 +86,28 @@ class User {
 }
 
 // スレッド一覧画面のプロバイダー
-final messagesProvider = StateNotifierProvider((ref) => MessagesController());
+final ChatThreadScreenProvider = StateNotifierProvider((ref) => MessagesController());
 
 // ここでスレッド一覧画面の状態管理
-class MessagesController extends StateNotifier<List<Message>> {
-  MessagesController() : super([]);
+class ChatThreadScreenController extends StateNotifier<List<ChatTile>> {
+  ChatThreadScreenController() : super([]);
 
   @override
   // MessagesPageクラスで`state`を参照するためのgetterを定義
-  List<Message> get state => super.state;
+  List<ChatTile> get state => super.state;
 
-  void addMessage(Message message) {
+  void addMessage(ChatTile message) {
     state = [...state, message];
   }
 }
 
 // 画面表示本体
-class MessagesPage extends ConsumerWidget {
-  const MessagesPage({super.key});
+class ChatThreadScreen extends ConsumerWidget {
+  const ChatThreadScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final messagesController = ref.watch(messagesProvider) as MessagesController;
+    final messagesController = ref.watch(ChatThreadScreenProvider) as ChatThreadScreenController;
     final messages = messagesController.state;
 
     return Scaffold(
